@@ -17,15 +17,15 @@ public class Lambda_04_Test {
 
     // tag::interfaces[]
     interface GenericPredicate<T> {
-        // TODO
+        boolean test(T t);
     }
 
     interface GenericMapper<T, E> {
-        // TODO
+        T map(E e);
     }
 
     interface Processor<T> {
-        // TODO
+        void process(T t);
     }
     // end::interfaces[]
 
@@ -39,9 +39,7 @@ public class Lambda_04_Test {
         }
 
         public void addAll(Collection<T> all) {
-            for(T el:all) {
-                list.add(el);
-            }
+            list.addAll(all);
         }
     // end::FuncCollection[]
 
@@ -49,6 +47,13 @@ public class Lambda_04_Test {
         private FuncCollection<T> filter(GenericPredicate<T> predicate) {
             FuncCollection<T> result = new FuncCollection<>();
             // TODO
+            
+            for (T el : list) {
+    			if (predicate.test(el)) {
+    				list.add(el);
+    			}
+    		}
+            
             return result;
         }
 
