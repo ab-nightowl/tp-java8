@@ -5,6 +5,7 @@ import java8.data.Person;
 import org.junit.Test;
 
 import java.util.Optional;
+import java.util.function.Consumer;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
@@ -46,6 +47,8 @@ public class Optional_03_Test {
         // TODO A l'aide de la méthode map récupérer le prénom (account -> person -> firstname)
         // TODO Utiliser la méthode orElseThrow pour déclencher l'exception GoodException si non trouvé
         // accOpt.map...
+        Optional<String> firstName = accOpt.map(a -> a.getOwner()).map(a -> a.getFirstname());
+        firstName.orElseThrow(() -> new GoodException());
     }
 
     @Test(expected = GoodException.class)
@@ -55,6 +58,8 @@ public class Optional_03_Test {
         // TODO A l'aide de la méthode map récupérer le prénom (account -> person -> firstname)
         // TODO Utiliser la méthode orElseThrow pour déclencher l'exception GoodException si non trouvé
         // accOpt.map...
+        Optional<String> firstName = accOpt.map(a -> a.getOwner()).map(a -> a.getFirstname());
+        firstName.orElseThrow(() -> new GoodException());
     }
 
     @Test(expected = GoodException.class)
@@ -64,6 +69,8 @@ public class Optional_03_Test {
         // TODO A l'aide de la méthode map récupérer le prénom (account -> person -> firstname)
         // TODO Utiliser la méthode orElseThrow pour déclencher l'exception GoodException si non trouvé
         // accOpt.map...
+        Optional<String> firstName = accOpt.map(a -> a.getOwner()).map(a -> a.getFirstname());
+        firstName.orElseThrow(() -> new GoodException());
     }
 
     @Test
@@ -73,5 +80,8 @@ public class Optional_03_Test {
         // TODO A l'aide de la méthode map récupérer le prénom (account -> person -> firstname)
         // TODO Utiliser la méthode ifPresent pour valider que le prénom est "A"
         // accOpt.map...
+        Optional<String> firstName = accOpt.map(a -> a.getOwner()).map(a -> a.getFirstname());
+        firstName.ifPresent(s -> s.startsWith("A"));
+        firstName.orElseThrow(() -> new GoodException());
     }
 }

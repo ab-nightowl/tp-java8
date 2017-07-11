@@ -69,14 +69,17 @@ public class Optional_02_Test {
 
         // TODO appliquer la méthode "filter" à julesOpt avec le prédicat "adult"
         // TODO chaîner avec la méthode "map" pour récupérer l'age
-        Optional<Integer> julesAge = julesOpt.filter(adult).map(p -> p.getAge());
+        
+        // Optional<Integer> julesAge = julesOpt.filter(adult).map(p -> p.getAge());
+        
         // TODO utiliser la méthode ifPresent pour vérifier que l'age est bien 30, déclencher l'exception GoodException pour valider que la fonction en paramètre de ifPresent a bien été exécutée.
         // julesOpt.filter...;
-        julesAge.ifPresent(a -> {
-        	assertThat(a, is(30));
-        	throw new GoodException();
-        	});
-        	julesOpt.orElseThrow(() -> new GoodException());
+        julesOpt.filter(adult)
+        		.map(p -> p.getAge())
+        		.ifPresent(age -> {
+		        	assertThat(age, is(30));
+		        	throw new GoodException();
+	        	});
         
     }
 }
