@@ -80,8 +80,10 @@ public class Optional_03_Test {
         // TODO A l'aide de la méthode map récupérer le prénom (account -> person -> firstname)
         // TODO Utiliser la méthode ifPresent pour valider que le prénom est "A"
         // accOpt.map...
-        Optional<String> firstName = accOpt.map(a -> a.getOwner()).map(a -> a.getFirstname());
-        firstName.ifPresent(s -> s.startsWith("A"));
-        firstName.orElseThrow(() -> new GoodException());
+        accOpt.map(Account::getOwner)
+        	  .map(Person::getFirstname)
+        	  .ifPresent(firstname -> {
+        		  assertThat(firstname, is("A"));
+        	  });
     }
 }
