@@ -30,7 +30,7 @@ public class Function_04_Test {
     // tag::adult[]
     // TODO Compléter la fonction
     // TODO AGE >=18
-    Predicate<Person> adult = t -> t.getAge() >= 18;
+    Predicate<Person> adult = p -> p.getAge() >= 18;
     // end::adult[]
 
     @Test
